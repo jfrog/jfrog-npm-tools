@@ -1,0 +1,17 @@
+{
+  "name": "npm-secure-installer",
+  "version": "1.0.0",
+  "description": "An implementation that verifies and installs only a secure global components",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "npm-secure-installer": "./bin/index.js"
+  },
+  "dependencies": {
+    "yargs": "^17.3.1"
+  }
+}
