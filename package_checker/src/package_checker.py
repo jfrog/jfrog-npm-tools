@@ -27,7 +27,7 @@ class PackageVersionInfo:
 
         self.version_to_time = json.loads(res.stdout)
         self.all_versions = [
-            semver.parse(ver, loose=True)
+            semver.VersionInfo.parse(ver)
             for ver in self.version_to_time.keys()
             if ver not in ['modified', 'created']
         ]
@@ -67,7 +67,7 @@ class PackageVersionInfo:
         return versions_between
 
     def closest_previous(self, version):
-        closest_previous = semver.parse('0.0.0', loose=True)
+        closest_previous = semver.VersionInfo.parse('0.0.0')
         for candidate in self.all_versions:
             if closest_previous.compare(candidate) == -1 and version.compare(candidate) == 1:
                 closest_previous = candidate
@@ -92,7 +92,7 @@ class Version:
         if self.max_update_to:
             self.version = version[1:]
 
-        self.semver = semver.parse(self.version, loose=True)
+        self.semver = semver.VersionInfo.parse(self.version)
 
 
 @click.group()
